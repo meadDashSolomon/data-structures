@@ -6,12 +6,12 @@ var Queue = function() {
   this._first = 0;
 };
 
-Stack.prototype.push = function (value) {
+Queue.prototype.enqueue = function (value) {
   this._storage[this._size + this._first] = value;
   this._size++;
 }
 
-Stack.prototype.pop = function () {
+Queue.prototype.dequeue = function () {
   if (this._size === 0) {
     return undefined;
   }
@@ -20,7 +20,11 @@ Stack.prototype.pop = function () {
   this._first++;
   this._size--;
   return dequeuedValue;
+}
 
-Stack.prototype.size = function () {
+Queue.prototype.size = function () {
+  if (this._size <= 0) {
+    return 0;
+  }
   return this._size;
 }
